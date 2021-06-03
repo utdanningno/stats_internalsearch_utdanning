@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>Hvilke ord har brukerne søkt etter i Utdanning.no's internsøkelogg?</title>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+<style type="text/css" class="init"></style>
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+<!-- datasett
+TODO konverter til TSV
+-->
+<script type="text/javascript" language="javascript" src="data/searchlog.js"></script>
+<!-- / datasett -->
+
+
+<!--
+Laga med jQuery DataTables
+https://datatables.net/examples/index
+-->
+
+<script type="text/javascript" class="init">
+
+$(document).ready(function() {
+	$('#example').DataTable( {
+		data: dataSet,
+		"lengthMenu": [ [50, 100, 1000, -1], [50, 100, 1000, "Alle"] ],
+		"pageLength": 1000,
+		columns: [
+			{ title: "nr" },
+			{ title: "search_term" },
+			{ title: "ant_sok" },
+			{ title: "innholdstype" }
+		]
+	} ) .columnFilter({
+            aoColumns: [ { type: "select", values: [ 'yrke', 'organisasjon', 'utdanningsbeskrivelse','', 'uh_tilbud']  },
+                     { type: "text" },
+                     null,
+                     { type: "text" },
+             { type: "select" }
+                ]
+
+        });
+} );
+
+</script>
+</head>
+<body class="wide comments example">
+
+<!-- DataTables example - Javascript sourced data -->
+
+<a href="https://utdanning.no/" title="Hjem" rel="home" class="navbar-brand"> <img src="https://utdanning.no/themes/custom/utdanning/images/logo.png" alt="Hjem"> <span class="ml-2 d-none d-md-inline"></span> </a> <a name="top" id="top"></a>
+<div class="fw-background">
+
+</div>
+<div class="fw-container">
+  <div class="fw-nav">
+    <div class="mobile-show"> <a><i>Privat og ikke kvalitetssikra</i></a> </div>
+  </div>
+  <div class="fw-body">
+    <div class="content">
+      <h1 class="page_title">Utdanning.no internsøkelogg</h1>
+      <div class="info">Søkestrenger fra loggen fra 2018-04-24 til 2020-09-27.</div>
+      <div class="demo-html">
+        <table id="example" class="display" width="95%">
+        </table>
+      </div>
+
+      <div class="tabs">
+        <div class="js">
+          <p> <code class="multiline language-js"></code></p>
+        </div>
+        <div class="comments"> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="fw-footer">
+  <div class="skew"></div>
+  <div class="skew-bg"></div>
+</div>
+</body>
+</html>
